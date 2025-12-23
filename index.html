@@ -24,8 +24,7 @@
       <h2>About</h2>
       <p>
         Builderman is a 3D artist crafting dark, refined game assets with
-        precision geometry and luxury-focused aesthetics, currently i am making skins for venge.io a free competitive first-person shooter!
- 
+        precision geometry and luxury-focused aesthetics.
       </p>
     </section>
 
@@ -45,9 +44,22 @@
 
     <section>
       <h2>Presence</h2>
-      <a href="https://github.com/builderman-dev" class="lux-link">GitHub</a>
+      <a href="https://github.com/Builderman" class="lux-link">GitHub</a>
     </section>
   </main>
+
+  <!-- Hidden background music -->
+  <audio autoplay loop muted id="bg-music">
+    <source src="missing-you.mp4" type="audio/mp4">
+  </audio>
+
+  <script>
+    // Unmute after first user interaction (browser requirement)
+    document.addEventListener('click', () => {
+      const music = document.getElementById('bg-music');
+      if (music) music.muted = false;
+    }, { once: true });
+  </script>
 
 </body>
 </html>
