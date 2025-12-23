@@ -44,21 +44,28 @@
 
     <section>
       <h2>Presence</h2>
-      <a href="https://github.com/builderman-dev" class="lux-link">GitHub</a>
+      <a href="https://github.com/Builderman" class="lux-link">GitHub</a>
     </section>
   </main>
 
-  <!-- Hidden background music -->
-  <audio autoplay loop muted id="bg-music">
-    <source src="missing-you.mp4" type="audio/mp4">
+    <!-- Hidden background music -->
+  <audio id="bg-music" preload="auto">
+    <source src="missing-you.mp3" type="audio/mpeg">
   </audio>
 
   <script>
-    // Unmute after first user interaction (browser requirement)
-    document.addEventListener('click', () => {
-      const music = document.getElementById('bg-music');
-      if (music) music.muted = false;
-    }, { once: true });
+    const music = document.getElementById("bg-music");
+
+    function startMusic() {
+      music.volume = 0.4;
+      music.play().catch(() => {});
+      document.removeEventListener("click", startMusic);
+      document.removeEventListener("keydown", startMusic);
+    }
+
+    // Start music on first user interaction (required by browsers)
+    document.addEventListener("click", startMusic);
+    document.addEventListener("keydown", startMusic);
   </script>
 
 </body>
